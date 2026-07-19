@@ -1,0 +1,33 @@
+---
+import { services } from "../data/content.js";
+---
+
+<section id="services" class="bg-cream-dim px-5 py-20 sm:px-8 sm:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-gold-dark">What We Shoot</p>
+      <h2 class="mt-4 font-display text-3xl font-semibold text-ink sm:text-4xl">Our Services</h2>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3">
+      {
+        services.map((service) => (
+          <div class="group relative aspect-[4/5] overflow-hidden rounded-2xl">
+            <img
+              src={service.src}
+              alt={service.alt}
+              loading="lazy"
+              width="640"
+              height="800"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+            <p class="absolute inset-x-0 bottom-0 p-4 font-display text-base font-semibold text-cream sm:text-lg">
+              {service.title}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

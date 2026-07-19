@@ -1,0 +1,89 @@
+---
+import { navLinks, studio } from "../data/content.js";
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+    <a href="#top" class="font-display text-xl font-semibold tracking-wide text-ink">
+      {studio.name}
+    </a>
+
+    <nav class="hidden gap-8 md:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-ink-soft transition-colors hover:text-gold-dark"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href={studio.whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hidden rounded-full bg-ink px-5 py-2 text-sm font-medium text-cream transition-colors hover:bg-gold-dark md:inline-block"
+    >
+      Book a Session
+    </a>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      class="flex flex-col gap-1.5 p-2 md:hidden"
+    >
+      <span class="h-0.5 w-6 bg-ink"></span>
+      <span class="h-0.5 w-6 bg-ink"></span>
+      <span class="h-0.5 w-6 bg-ink"></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden flex-col gap-1 border-t border-ink/10 bg-cream px-5 pb-5 md:hidden"
+  >
+    {
+      navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded px-2 py-3 text-base font-medium text-ink-soft hover:bg-cream-dim"
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      href={studio.whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-2 rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-cream"
+    >
+      Book a Session
+    </a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = !menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden");
+    menu?.classList.toggle("flex");
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      menu.classList.remove("flex");
+      toggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

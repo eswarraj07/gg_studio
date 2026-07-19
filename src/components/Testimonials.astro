@@ -1,0 +1,40 @@
+---
+import { testimonials } from "../data/content.js";
+---
+
+<section id="testimonials" class="bg-ink px-5 py-20 sm:px-8 sm:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-gold">Love Letters</p>
+      <h2 class="mt-4 font-display text-3xl font-semibold text-cream sm:text-4xl">
+        What Our Clients Say
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {
+        testimonials.map((testimonial) => (
+          <figure class="rounded-2xl border border-cream/10 bg-cream/5 p-6 sm:p-8">
+            <blockquote class="font-display text-lg leading-relaxed text-cream/90">
+              &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+            <figcaption class="mt-6 flex items-center gap-3">
+              <img
+                src={testimonial.avatar}
+                alt={testimonial.name}
+                loading="lazy"
+                width="48"
+                height="48"
+                class="h-12 w-12 rounded-full object-cover"
+              />
+              <div>
+                <p class="text-sm font-semibold text-cream">{testimonial.name}</p>
+                <p class="text-xs text-cream/60">{testimonial.role}</p>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

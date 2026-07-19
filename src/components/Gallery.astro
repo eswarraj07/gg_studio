@@ -1,0 +1,29 @@
+---
+import { galleryImages } from "../data/content.js";
+---
+
+<section id="gallery" class="px-5 py-20 sm:px-8 sm:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-gold-dark">Stories We Told</p>
+      <h2 class="mt-4 font-display text-3xl font-semibold text-ink sm:text-4xl">Portfolio</h2>
+    </div>
+
+    <div class="mt-12 columns-2 gap-4 sm:gap-6 md:columns-3">
+      {
+        galleryImages.map((image) => (
+          <div class="mb-4 break-inside-avoid overflow-hidden rounded-2xl sm:mb-6">
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              width="720"
+              height="900"
+              class="w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import { studio } from "../data/content.js";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ink px-5 py-10 sm:px-8">
+  <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+    <div>
+      <p class="font-display text-lg font-semibold text-cream">{studio.name}</p>
+      <p class="mt-1 text-sm text-cream/60">{studio.tagline}</p>
+    </div>
+
+    <div class="flex gap-5 text-sm text-cream/70">
+      <a href={studio.instagram} target="_blank" rel="noopener noreferrer" class="hover:text-gold">
+        Instagram
+      </a>
+      <a href={studio.facebook} target="_blank" rel="noopener noreferrer" class="hover:text-gold">
+        Facebook
+      </a>
+      <a href={studio.whatsappLink} target="_blank" rel="noopener noreferrer" class="hover:text-gold">
+        WhatsApp
+      </a>
+    </div>
+
+    <p class="text-xs text-cream/50">&copy; {year} {studio.name}. All rights reserved.</p>
+  </div>
+</footer>
