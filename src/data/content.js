@@ -1,5 +1,30 @@
-function unsplash(base, width) {
-  return `${base}?auto=format&fit=crop&w=${width}&q=80`;
+function escapeSvgText(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function placeholderImage(label) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+    <rect width="800" height="1000" fill="#f0e9de"/>
+    <g transform="translate(400,420)" fill="none" stroke="#b3874a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="-90" y="-55" width="180" height="130" rx="14"/>
+      <circle cx="0" cy="14" r="42"/>
+      <path d="M -40 -55 L -25 -85 L 25 -85 L 40 -55"/>
+    </g>
+    <text x="400" y="545" font-family="Georgia, serif" font-size="32" fill="#4a4038" text-anchor="middle">${escapeSvgText(label)}</text>
+    <text x="400" y="585" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" fill="#8a7f74" text-anchor="middle">PHOTO COMING SOON</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
+function avatarPlaceholder(initials) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="60" fill="#241f1b"/>
+    <text x="60" y="73" font-family="Georgia, serif" font-size="38" fill="#faf6f0" text-anchor="middle">${initials}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
 export const studio = {
@@ -20,98 +45,194 @@ export const studio = {
 };
 
 export const heroImage = {
-  base: "https://images.unsplash.com/photo-1600685890506-593fdf55949b",
-  alt: "Bride in traditional wedding attire, portrait",
+  srcset: [
+    { src: "/photos/hero/hero-800.jpg", width: 800 },
+    { src: "/photos/hero/hero-1200.jpg", width: 1200 },
+    { src: "/photos/hero/hero-1800.jpg", width: 1800 },
+  ],
+  src: "/photos/hero/hero-1800.jpg",
+  alt: "Bride in traditional gold jewelry and silk saree, studio portrait",
 };
 
 export const services = [
   {
     title: "Bride Portraits",
-    base: "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9",
+    src: "/photos/services/bride.jpg",
     alt: "Bride portrait session",
   },
   {
     title: "Groom Portraits",
-    base: "https://images.unsplash.com/photo-1635919254131-cbaa334ef53e",
+    src: "/photos/services/groom.jpg",
     alt: "Groom portrait session",
   },
   {
     title: "Couple Portraits",
-    base: "https://images.unsplash.com/photo-1591604466107-ec97de577aff",
+    src: "/photos/services/couple.jpg",
     alt: "Couple portrait session",
   },
   {
     title: "Pre / Post Wedding",
-    base: "https://images.unsplash.com/photo-1587271636175-90d58cdad458",
-    alt: "Pre and post wedding photoshoot",
+    src: "/photos/services/pre-post-wedding.jpg",
+    alt: "Bride descending a grand staircase, pre-wedding photoshoot",
   },
   {
     title: "Candid Photography",
-    base: "https://images.unsplash.com/photo-1574397188309-e83dfe918ecb",
-    alt: "Candid wedding moment",
+    src: "/photos/services/candid.jpg",
+    alt: "Candid photo of a groom walking through a lit venue",
   },
   {
     title: "Maternity",
-    base: "https://images.unsplash.com/photo-1711313530954-39421910bc82",
-    alt: "Maternity photoshoot",
+    src: "/photos/services/maternity.jpg",
+    alt: "Maternity portrait in a traditional saree",
   },
   {
-    title: "New Born Photoshoot",
-    base: "https://images.unsplash.com/photo-1596252732610-fce5ac542f8e",
-    alt: "Newborn baby photoshoot",
+    title: "New Born Portraits",
+    src: "/photos/services/newborn-portrait.jpg",
+    alt: "Baby in a white outfit, portrait session",
   },
   {
-    title: "Toddler Modeling Shoot",
-    base: "https://images.unsplash.com/photo-1566513857792-9a52cd97e06d",
-    alt: "Toddler modeling photoshoot",
+    title: "Modeling / Portfolio Shoot",
+    src: "/photos/services/modeling.jpg",
+    alt: "Portfolio modeling photoshoot",
+  },
+  {
+    title: "Bharatanatyam / Dance Photoshoot",
+    src: "/photos/services/bharatanatyam.jpg",
+    alt: "Bharatanatyam dancer in costume, studio photoshoot",
   },
   {
     title: "Gifts & Frames",
-    base: "https://images.unsplash.com/photo-1683523946422-64283e8af4d5",
-    alt: "Printed photo gifts and frames",
+    src: "/photos/services/gifts-frames.jpg",
+    alt: "Photo frame and gift bag with tissue paper",
   },
-].map((service) => ({
-  ...service,
-  src: unsplash(service.base, 640),
-}));
+];
 
 export const galleryImages = [
   {
-    base: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2",
-    alt: "Wedding ceremony moment",
+    src: "/photos/gallery/bride-pooja.jpg",
+    alt: "Bride holding a ceremonial pooja plate",
   },
   {
-    base: "https://images.unsplash.com/photo-1633104502646-eb5ea88b3190",
-    alt: "Groom getting ready",
+    src: "/photos/gallery/wedding-staircase.jpg",
+    alt: "Bride descending a grand staircase in a flowing gown",
   },
   {
-    base: "https://images.unsplash.com/photo-1722952934708-749c22eb2e58",
-    alt: "Couple sharing a quiet moment",
+    src: "/photos/gallery/groom-hall.jpg",
+    alt: "Groom walking through a decorated wedding hall",
   },
   {
-    base: "https://images.unsplash.com/photo-1601121868898-4581104b29de",
-    alt: "Candid celebration moment",
+    src: "/photos/gallery/couple-sofa.jpg",
+    alt: "Couple seated together in front of a floral backdrop",
   },
   {
-    base: "https://images.unsplash.com/photo-1721655426078-954f8967d9ea",
-    alt: "Maternity portrait outdoors",
+    src: "/photos/gallery/candid-ritual.jpg",
+    alt: "Candid moment of a couple during a wedding ritual",
   },
   {
-    base: "https://images.unsplash.com/photo-1610901137736-d7cc46657b11",
-    alt: "Newborn sleeping portrait",
+    src: "/photos/gallery/modeling-outdoor.jpg",
+    alt: "Portfolio shoot portrait among green leaves",
   },
   {
-    base: "https://images.unsplash.com/photo-1662122071926-9dfd4e518dec",
-    alt: "Toddler portrait smiling",
+    src: "/photos/gallery/maternity-couple.jpg",
+    alt: "Expecting couple portrait during a Seemantham ceremony",
   },
   {
-    base: "https://images.unsplash.com/photo-1621533748467-27c570b23883",
-    alt: "Framed photo prints as gifts",
+    src: "/photos/services/newborn-portrait.jpg",
+    alt: "Baby in a white outfit waving",
   },
-].map((image) => ({
-  ...image,
-  src: unsplash(image.base, 720),
-}));
+  {
+    src: "/photos/gallery/dance-1.jpg",
+    alt: "Bharatanatyam dancer in a dramatic pose",
+  },
+  {
+    src: "/photos/gallery/birthday-mother.jpg",
+    alt: "Mother embracing her baby in a flower headband",
+  },
+  {
+    src: "/photos/gallery/gifts-frames.jpg",
+    alt: "Photo frame and gift bag with tissue paper",
+  },
+  {
+    src: "/photos/gallery/bride-portrait.jpg",
+    alt: "Bride in white gown holding a bouquet",
+  },
+  {
+    src: "/photos/gallery/wedding-editorial.jpg",
+    alt: "Bride in a silver gown, outdoor editorial portrait",
+  },
+  {
+    src: "/photos/gallery/couple-romantic.jpg",
+    alt: "Couple smiling closely under pink lighting",
+  },
+  {
+    src: "/photos/gallery/candid-ceremony.jpg",
+    alt: "Candid moment of a couple seated during a ceremony",
+  },
+  {
+    src: "/photos/gallery/modeling-red.jpg",
+    alt: "Portfolio shoot portrait in red and gold attire",
+  },
+  {
+    src: "/photos/gallery/dance-2.jpg",
+    alt: "Bharatanatyam dancer seated in costume",
+  },
+  {
+    src: "/photos/gallery/bride-muslim-1.jpg",
+    alt: "Bride in a pink lehenga in a hotel hallway",
+  },
+  {
+    src: "/photos/gallery/wedding-garden.jpg",
+    alt: "Bride standing outside a church with a bouquet",
+  },
+  {
+    src: "/photos/gallery/outdoor-heart.jpg",
+    alt: "Couple framed inside a heart-shaped floral display",
+  },
+  {
+    src: "/photos/gallery/modeling-saree.jpg",
+    alt: "Portfolio shoot portrait in a blue saree",
+  },
+  {
+    src: "/photos/gallery/dance-group.jpg",
+    alt: "Group of Bharatanatyam dancers in a dramatic pose",
+  },
+  {
+    src: "/photos/gallery/bride-muslim-2.jpg",
+    alt: "Bride in a blue and gold lehenga smiling",
+  },
+  {
+    src: "/photos/gallery/wedding-bouquet-bw.jpg",
+    alt: "Black and white portrait of a bride holding a bouquet",
+  },
+  {
+    src: "/photos/gallery/outdoor-archway.jpg",
+    alt: "Couple standing under a floral archway",
+  },
+  {
+    src: "/photos/gallery/modeling-veil.jpg",
+    alt: "Portfolio shoot portrait in a red veil",
+  },
+  {
+    src: "/photos/gallery/dance-solo.jpg",
+    alt: "Bharatanatyam dancer in a dynamic pose",
+  },
+  {
+    src: "/photos/gallery/bride-joyful.jpg",
+    alt: "Bride smiling with gold jewelry raised",
+  },
+  {
+    src: "/photos/gallery/wedding-gate.jpg",
+    alt: "Bride smiling outside a gate in her wedding gown",
+  },
+  {
+    src: "/photos/gallery/modeling-smile.jpg",
+    alt: "Portfolio shoot portrait smiling in maroon attire",
+  },
+  {
+    src: "/photos/gallery/bride-elegant.jpg",
+    alt: "Bride portrait leaning against a pillar",
+  },
+];
 
 export const testimonials = [
   {
@@ -119,40 +240,28 @@ export const testimonials = [
       "Every frame felt like it understood the moment before we did. Our wedding album still gives us goosebumps.",
     name: "Priya & Arun",
     role: "Wedding clients",
-    avatar: unsplash(
-      "https://images.unsplash.com/photo-1506863530036-1efeddceb993",
-      120,
-    ),
+    avatar: avatarPlaceholder("PA"),
   },
   {
     quote:
       "Patient, warm, and incredibly skilled with newborns. We got portraits we'll treasure forever.",
     name: "Divya R.",
     role: "Newborn shoot",
-    avatar: unsplash(
-      "https://images.unsplash.com/photo-1567516364473-233c4b6fcfbe",
-      120,
-    ),
+    avatar: avatarPlaceholder("DR"),
   },
   {
     quote:
       "Professional from the first call to the final print. The candid shots captured emotions we didn't even notice happening.",
     name: "Karthik S.",
     role: "Couple portraits",
-    avatar: unsplash(
-      "https://images.unsplash.com/photo-1528892952291-009c663ce843",
-      120,
-    ),
+    avatar: avatarPlaceholder("KS"),
   },
   {
     quote:
-      "Our toddler wouldn't sit still for anyone else, but the team made the whole shoot feel like play.",
+      "Our daughter's portfolio shoot came out stunning — confident, camera-ready photos we'll use for years.",
     name: "Meera & Vishal",
-    role: "Toddler shoot",
-    avatar: unsplash(
-      "https://images.unsplash.com/photo-1600603406200-5b2a104684ac",
-      120,
-    ),
+    role: "Portfolio shoot",
+    avatar: avatarPlaceholder("MV"),
   },
 ];
 

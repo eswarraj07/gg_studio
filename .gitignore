@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw client photo drops (large, not meant for the repo)
+wetransfer_*/
+wetransfer_*.zip
+wetransfer_*.rar
