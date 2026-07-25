@@ -39,7 +39,9 @@ export const studio = {
     line3: "Chennai - 101",
   },
   mapEmbedSrc:
-    "https://www.google.com/maps?q=TNHB+Complex+Annanagar+West+Extension+Chennai+101&output=embed",
+    "https://www.google.com/maps?q=GG+Studio+Wedding+Photographers+Family+Photo+Studio+Mogappair+Chennai&ll=13.0874144,80.1862416&z=17&output=embed",
+  mapLink:
+    "https://www.google.com/maps/place/GG+Studio+-+Wedding+Photographers+%2F+Family+Photo+Studio+in+Mogappair/@13.0874144,80.1862416,17z/data=!3m1!4b1!4m6!3m5!1s0x3a52640f15555547:0x926cfb9bbef802b1!8m2!3d13.0874144!4d80.1862416!16s%2Fg%2F11cn5mywnf",
   instagram: "https://instagram.com/",
   facebook: "https://facebook.com/",
 };
