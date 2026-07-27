@@ -28,7 +28,7 @@ function avatarPlaceholder(initials) {
 }
 
 export const studio = {
-  name: "CraftNexa",
+  name: "GG Studio",
   tagline: "Photography, crafted with care.",
   phone: "9087765482",
   phoneDisplay: "+91 90877 65482",
@@ -61,178 +61,106 @@ export const services = [
     title: "Bride Portraits",
     src: "/photos/services/bride.jpg",
     alt: "Bride portrait session",
+    photos: [
+      { src: "/photos/services/bride.jpg", alt: "Bride portrait session" },
+      { src: "/photos/gallery/bride-pooja.jpg", alt: "Bride holding a ceremonial pooja plate" },
+      { src: "/photos/gallery/bride-portrait.jpg", alt: "Bride in white gown holding a bouquet" },
+      { src: "/photos/gallery/bride-joyful.jpg", alt: "Bride smiling with gold jewelry raised" },
+      { src: "/photos/gallery/bride-elegant.jpg", alt: "Bride portrait leaning against a pillar" },
+    ],
   },
   {
     title: "Groom Portraits",
     src: "/photos/services/groom.jpg",
     alt: "Groom portrait session",
+    photos: [
+      { src: "/photos/services/groom.jpg", alt: "Groom portrait session" },
+      { src: "/photos/gallery/groom-hall.jpg", alt: "Groom walking through a decorated wedding hall" },
+    ],
   },
   {
     title: "Couple Portraits",
     src: "/photos/services/couple.jpg",
     alt: "Couple portrait session",
+    photos: [
+      { src: "/photos/services/couple.jpg", alt: "Couple portrait session" },
+      { src: "/photos/gallery/couple-sofa.jpg", alt: "Couple seated together in front of a floral backdrop" },
+      { src: "/photos/gallery/couple-romantic.jpg", alt: "Couple smiling closely under pink lighting" },
+      { src: "/photos/gallery/outdoor-heart.jpg", alt: "Couple framed inside a heart-shaped floral display" },
+      { src: "/photos/gallery/outdoor-archway.jpg", alt: "Couple standing under a floral archway" },
+    ],
   },
   {
     title: "Pre / Post Wedding",
     src: "/photos/services/pre-post-wedding.jpg",
     alt: "Bride descending a grand staircase, pre-wedding photoshoot",
+    photos: [
+      { src: "/photos/services/pre-post-wedding.jpg", alt: "Bride descending a grand staircase, pre-wedding photoshoot" },
+      { src: "/photos/gallery/wedding-staircase.jpg", alt: "Bride descending a grand staircase in a flowing gown" },
+      { src: "/photos/gallery/wedding-editorial.jpg", alt: "Bride in a silver gown, outdoor editorial portrait" },
+      { src: "/photos/gallery/wedding-garden.jpg", alt: "Bride standing outside a church with a bouquet" },
+      { src: "/photos/gallery/wedding-bouquet-bw.jpg", alt: "Black and white portrait of a bride holding a bouquet" },
+    ],
   },
   {
     title: "Candid Photography",
     src: "/photos/services/candid.jpg",
     alt: "Candid photo of a groom walking through a lit venue",
+    photos: [
+      { src: "/photos/services/candid.jpg", alt: "Candid photo of a groom walking through a lit venue" },
+      { src: "/photos/gallery/candid-ritual.jpg", alt: "Candid moment of a couple during a wedding ritual" },
+      { src: "/photos/gallery/candid-ceremony.jpg", alt: "Candid moment of a couple seated during a ceremony" },
+    ],
   },
   {
     title: "Maternity",
     src: "/photos/services/maternity.jpg",
     alt: "Maternity portrait in a traditional saree",
+    photos: [
+      { src: "/photos/services/maternity.jpg", alt: "Maternity portrait in a traditional saree" },
+      { src: "/photos/gallery/maternity-couple.jpg", alt: "Expecting couple portrait during a Seemantham ceremony" },
+    ],
   },
   {
     title: "New Born Portraits",
     src: "/photos/services/newborn-portrait.jpg",
     alt: "Baby in a white outfit, portrait session",
+    photos: [
+      { src: "/photos/services/newborn-portrait.jpg", alt: "Baby in a white outfit, portrait session" },
+      { src: "/photos/gallery/birthday-mother.jpg", alt: "Mother embracing her baby in a flower headband" },
+    ],
   },
   {
     title: "Modeling / Portfolio Shoot",
     src: "/photos/services/modeling.jpg",
     alt: "Portfolio modeling photoshoot",
+    photos: [
+      { src: "/photos/services/modeling.jpg", alt: "Portfolio modeling photoshoot" },
+      { src: "/photos/gallery/modeling-outdoor.jpg", alt: "Portfolio shoot portrait among green leaves" },
+      { src: "/photos/gallery/modeling-red.jpg", alt: "Portfolio shoot portrait in red and gold attire" },
+      { src: "/photos/gallery/modeling-saree.jpg", alt: "Portfolio shoot portrait in a blue saree" },
+      { src: "/photos/gallery/modeling-veil.jpg", alt: "Portfolio shoot portrait in a red veil" },
+    ],
   },
   {
     title: "Bharatanatyam / Dance Photoshoot",
     src: "/photos/services/bharatanatyam.jpg",
     alt: "Bharatanatyam dancer in costume, studio photoshoot",
+    photos: [
+      { src: "/photos/services/bharatanatyam.jpg", alt: "Bharatanatyam dancer in costume, studio photoshoot" },
+      { src: "/photos/gallery/dance-1.jpg", alt: "Bharatanatyam dancer in a dramatic pose" },
+      { src: "/photos/gallery/dance-2.jpg", alt: "Bharatanatyam dancer seated in costume" },
+      { src: "/photos/gallery/dance-group.jpg", alt: "Group of Bharatanatyam dancers in a dramatic pose" },
+      { src: "/photos/gallery/dance-solo.jpg", alt: "Bharatanatyam dancer in a dynamic pose" },
+    ],
   },
   {
     title: "Gifts & Frames",
     src: "/photos/services/gifts-frames.jpg",
     alt: "Photo frame and gift bag with tissue paper",
-  },
-];
-
-export const galleryImages = [
-  {
-    src: "/photos/gallery/bride-pooja.jpg",
-    alt: "Bride holding a ceremonial pooja plate",
-  },
-  {
-    src: "/photos/gallery/wedding-staircase.jpg",
-    alt: "Bride descending a grand staircase in a flowing gown",
-  },
-  {
-    src: "/photos/gallery/groom-hall.jpg",
-    alt: "Groom walking through a decorated wedding hall",
-  },
-  {
-    src: "/photos/gallery/couple-sofa.jpg",
-    alt: "Couple seated together in front of a floral backdrop",
-  },
-  {
-    src: "/photos/gallery/candid-ritual.jpg",
-    alt: "Candid moment of a couple during a wedding ritual",
-  },
-  {
-    src: "/photos/gallery/modeling-outdoor.jpg",
-    alt: "Portfolio shoot portrait among green leaves",
-  },
-  {
-    src: "/photos/gallery/maternity-couple.jpg",
-    alt: "Expecting couple portrait during a Seemantham ceremony",
-  },
-  {
-    src: "/photos/services/newborn-portrait.jpg",
-    alt: "Baby in a white outfit waving",
-  },
-  {
-    src: "/photos/gallery/dance-1.jpg",
-    alt: "Bharatanatyam dancer in a dramatic pose",
-  },
-  {
-    src: "/photos/gallery/birthday-mother.jpg",
-    alt: "Mother embracing her baby in a flower headband",
-  },
-  {
-    src: "/photos/gallery/gifts-frames.jpg",
-    alt: "Photo frame and gift bag with tissue paper",
-  },
-  {
-    src: "/photos/gallery/bride-portrait.jpg",
-    alt: "Bride in white gown holding a bouquet",
-  },
-  {
-    src: "/photos/gallery/wedding-editorial.jpg",
-    alt: "Bride in a silver gown, outdoor editorial portrait",
-  },
-  {
-    src: "/photos/gallery/couple-romantic.jpg",
-    alt: "Couple smiling closely under pink lighting",
-  },
-  {
-    src: "/photos/gallery/candid-ceremony.jpg",
-    alt: "Candid moment of a couple seated during a ceremony",
-  },
-  {
-    src: "/photos/gallery/modeling-red.jpg",
-    alt: "Portfolio shoot portrait in red and gold attire",
-  },
-  {
-    src: "/photos/gallery/dance-2.jpg",
-    alt: "Bharatanatyam dancer seated in costume",
-  },
-  {
-    src: "/photos/gallery/bride-muslim-1.jpg",
-    alt: "Bride in a pink lehenga in a hotel hallway",
-  },
-  {
-    src: "/photos/gallery/wedding-garden.jpg",
-    alt: "Bride standing outside a church with a bouquet",
-  },
-  {
-    src: "/photos/gallery/outdoor-heart.jpg",
-    alt: "Couple framed inside a heart-shaped floral display",
-  },
-  {
-    src: "/photos/gallery/modeling-saree.jpg",
-    alt: "Portfolio shoot portrait in a blue saree",
-  },
-  {
-    src: "/photos/gallery/dance-group.jpg",
-    alt: "Group of Bharatanatyam dancers in a dramatic pose",
-  },
-  {
-    src: "/photos/gallery/bride-muslim-2.jpg",
-    alt: "Bride in a blue and gold lehenga smiling",
-  },
-  {
-    src: "/photos/gallery/wedding-bouquet-bw.jpg",
-    alt: "Black and white portrait of a bride holding a bouquet",
-  },
-  {
-    src: "/photos/gallery/outdoor-archway.jpg",
-    alt: "Couple standing under a floral archway",
-  },
-  {
-    src: "/photos/gallery/modeling-veil.jpg",
-    alt: "Portfolio shoot portrait in a red veil",
-  },
-  {
-    src: "/photos/gallery/dance-solo.jpg",
-    alt: "Bharatanatyam dancer in a dynamic pose",
-  },
-  {
-    src: "/photos/gallery/bride-joyful.jpg",
-    alt: "Bride smiling with gold jewelry raised",
-  },
-  {
-    src: "/photos/gallery/wedding-gate.jpg",
-    alt: "Bride smiling outside a gate in her wedding gown",
-  },
-  {
-    src: "/photos/gallery/modeling-smile.jpg",
-    alt: "Portfolio shoot portrait smiling in maroon attire",
-  },
-  {
-    src: "/photos/gallery/bride-elegant.jpg",
-    alt: "Bride portrait leaning against a pillar",
+    photos: [
+      { src: "/photos/services/gifts-frames.jpg", alt: "Photo frame and gift bag with tissue paper" },
+    ],
   },
 ];
 
@@ -270,7 +198,6 @@ export const testimonials = [
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Gallery", href: "#gallery" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];

@@ -11,8 +11,13 @@ import { services } from "../data/content.js";
 
     <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3">
       {
-        services.map((service) => (
-          <div class="group relative aspect-[4/5] overflow-hidden rounded-2xl">
+        services.map((service, index) => (
+          <button
+            type="button"
+            class="service-trigger group relative aspect-[4/5] overflow-hidden rounded-2xl text-left"
+            data-index={index}
+            aria-label={`View photos for ${service.title}`}
+          >
             <img
               src={service.src}
               alt={service.alt}
@@ -25,9 +30,130 @@ import { services } from "../data/content.js";
             <p class="absolute inset-x-0 bottom-0 p-4 font-display text-base font-semibold text-cream sm:text-lg">
               {service.title}
             </p>
-          </div>
+          </button>
         ))
       }
     </div>
   </div>
 </section>
+
+<div
+  id="service-modal"
+  class="fixed inset-0 z-[60] hidden items-center justify-center bg-ink/95 p-4 sm:p-8"
+>
+  <button
+    type="button"
+    id="service-modal-close"
+    aria-label="Close"
+    class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-cream/30 text-cream transition-colors hover:bg-cream/10 sm:right-8 sm:top-8"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    id="service-modal-prev"
+    aria-label="Previous photo"
+    class="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-cream/30 text-cream transition-colors hover:bg-cream/10 sm:left-6"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+    </svg>
+  </button>
+
+  <div class="flex max-h-[88vh] max-w-full flex-col items-center sm:max-w-[90vw]">
+    <img id="service-modal-img" src="" alt="" class="max-h-[75vh] max-w-full rounded-lg object-contain" />
+    <div class="mt-4 text-center">
+      <p id="service-modal-title" class="font-display text-lg font-semibold text-cream" />
+      <p id="service-modal-count" class="mt-1 text-sm text-cream/60" />
+    </div>
+  </div>
+
+  <button
+    type="button"
+    id="service-modal-next"
+    aria-label="Next photo"
+    class="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-cream/30 text-cream transition-colors hover:bg-cream/10 sm:right-6"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6" />
+    </svg>
+  </button>
+</div>
+
+<script
+  define:vars={{
+    services: services.map((service) => ({
+      title: service.title,
+      photos: service.photos,
+    })),
+  }}
+>
+  const modal = document.getElementById("service-modal");
+  const modalImg = document.getElementById("service-modal-img");
+  const modalTitle = document.getElementById("service-modal-title");
+  const modalCount = document.getElementById("service-modal-count");
+  const closeBtn = document.getElementById("service-modal-close");
+  const prevBtn = document.getElementById("service-modal-prev");
+  const nextBtn = document.getElementById("service-modal-next");
+  const triggers = document.querySelectorAll(".service-trigger");
+
+  let currentService = 0;
+  let currentPhoto = 0;
+
+  function show() {
+    const service = services[currentService];
+    const photo = service.photos[currentPhoto];
+    modalImg.src = photo.src;
+    modalImg.alt = photo.alt;
+    modalTitle.textContent = service.title;
+    modalCount.textContent = `${currentPhoto + 1} / ${service.photos.length}`;
+    const hasMultiple = service.photos.length > 1;
+    prevBtn.classList.toggle("hidden", !hasMultiple);
+    nextBtn.classList.toggle("hidden", !hasMultiple);
+  }
+
+  function open(serviceIndex) {
+    currentService = serviceIndex;
+    currentPhoto = 0;
+    show();
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  function step(direction) {
+    const total = services[currentService].photos.length;
+    currentPhoto = (currentPhoto + direction + total) % total;
+    show();
+  }
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      open(Number(trigger.dataset.index));
+    });
+  });
+
+  closeBtn.addEventListener("click", close);
+  prevBtn.addEventListener("click", () => step(-1));
+  nextBtn.addEventListener("click", () => step(1));
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (modal.classList.contains("hidden")) return;
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft") step(-1);
+    if (event.key === "ArrowRight") step(1);
+  });
+</script>
