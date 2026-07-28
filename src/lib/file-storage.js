@@ -1,7 +1,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const SERVICES_FILE = resolve(process.cwd(), "data/services.json");
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const SERVICES_FILE = resolve(__dirname, "../../data/services.json");
 
 export const MAX_PHOTOS_PER_SERVICE = 10;
 
