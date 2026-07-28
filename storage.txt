@@ -1,6 +1,0 @@
-3daf700e53c94a9f2315eee76a2f35b9
-
-38025c2c0029b99d80e7b1338f9508e9a073396d5863729a3cfc963793583d21
-
-https://spwrgzmyokfsbxwjaxlh.storage.supabase.co/storage/v1/s3
-ap-south-1

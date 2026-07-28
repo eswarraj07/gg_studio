@@ -1,50 +1,43 @@
 [
   {
-    "id": 1,
-    "title": "Bride Portraits",
-    "position": 1,
+    "id": 5,
+    "title": "Candid Photography",
+    "position": 0,
     "photos": [
       {
-        "id": 3,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-portrait.jpg",
-        "alt": "Bride in white gown holding a bouquet",
+        "id": 19,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/candid-ritual.jpg",
+        "alt": "Candid moment of a couple during a wedding ritual",
         "position": 1,
-        "supabasePublicId": "legacy/gallery/bride-portrait.jpg"
+        "supabasePublicId": "legacy/gallery/candid-ritual.jpg"
       },
       {
-        "id": 5,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-elegant.jpg",
-        "alt": "Bride portrait leaning against a pillar",
+        "id": 18,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/candid.jpg",
+        "alt": "Candid photo of a groom walking through a lit venue",
         "position": 0,
-        "supabasePublicId": "legacy/gallery/bride-elegant.jpg"
+        "supabasePublicId": "legacy/services/candid.jpg"
       },
       {
-        "id": 1,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/bride.jpg",
-        "alt": "Bride portrait session",
+        "id": 20,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/candid-ceremony.jpg",
+        "alt": "Candid moment of a couple seated during a ceremony",
         "position": 2,
-        "supabasePublicId": "legacy/services/bride.jpg"
+        "supabasePublicId": "legacy/gallery/candid-ceremony.jpg"
       },
       {
-        "id": 2,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-pooja.jpg",
-        "alt": "Bride holding a ceremonial pooja plate",
-        "position": 3,
-        "supabasePublicId": "legacy/gallery/bride-pooja.jpg"
-      },
-      {
-        "id": 4,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-joyful.jpg",
-        "alt": "Bride smiling with gold jewelry raised",
-        "position": 4,
-        "supabasePublicId": "legacy/gallery/bride-joyful.jpg"
+        "id": 21,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/photos/1785276690023-009.jpg",
+        "alt": "",
+        "supabasePublicId": "photos/1785276690023-009.jpg",
+        "position": 3
       }
     ]
   },
   {
     "id": 2,
     "title": "Groom Portraits",
-    "position": 0,
+    "position": 2,
     "photos": [
       {
         "id": 6,
@@ -65,7 +58,7 @@
   {
     "id": 3,
     "title": "Couple Portraits",
-    "position": 2,
+    "position": 1,
     "photos": [
       {
         "id": 8,
@@ -105,9 +98,51 @@
     ]
   },
   {
+    "id": 1,
+    "title": "Bride Portraits",
+    "position": 3,
+    "photos": [
+      {
+        "id": 3,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-portrait.jpg",
+        "alt": "Bride in white gown holding a bouquet",
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/bride-portrait.jpg"
+      },
+      {
+        "id": 5,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-elegant.jpg",
+        "alt": "Bride portrait leaning against a pillar",
+        "position": 0,
+        "supabasePublicId": "legacy/gallery/bride-elegant.jpg"
+      },
+      {
+        "id": 1,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/bride.jpg",
+        "alt": "Bride portrait session",
+        "position": 2,
+        "supabasePublicId": "legacy/services/bride.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-pooja.jpg",
+        "alt": "Bride holding a ceremonial pooja plate",
+        "position": 3,
+        "supabasePublicId": "legacy/gallery/bride-pooja.jpg"
+      },
+      {
+        "id": 4,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-joyful.jpg",
+        "alt": "Bride smiling with gold jewelry raised",
+        "position": 4,
+        "supabasePublicId": "legacy/gallery/bride-joyful.jpg"
+      }
+    ]
+  },
+  {
     "id": 4,
     "title": "Pre / Post Wedding",
-    "position": 3,
+    "position": 4,
     "photos": [
       {
         "id": 13,
@@ -143,34 +178,6 @@
         "alt": "Black and white portrait of a bride holding a bouquet",
         "position": 4,
         "supabasePublicId": "legacy/gallery/wedding-bouquet-bw.jpg"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "title": "Candid Photography",
-    "position": 4,
-    "photos": [
-      {
-        "id": 18,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/candid.jpg",
-        "alt": "Candid photo of a groom walking through a lit venue",
-        "position": 0,
-        "supabasePublicId": "legacy/services/candid.jpg"
-      },
-      {
-        "id": 19,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/candid-ritual.jpg",
-        "alt": "Candid moment of a couple during a wedding ritual",
-        "position": 1,
-        "supabasePublicId": "legacy/gallery/candid-ritual.jpg"
-      },
-      {
-        "id": 20,
-        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/candid-ceremony.jpg",
-        "alt": "Candid moment of a couple seated during a ceremony",
-        "position": 2,
-        "supabasePublicId": "legacy/gallery/candid-ceremony.jpg"
       }
     ]
   },
