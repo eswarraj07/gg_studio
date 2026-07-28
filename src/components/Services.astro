@@ -1,5 +1,8 @@
 ---
-import { services } from "../data/content.js";
+import { listServicesWithPhotos } from "../lib/db.js";
+import { placeholderImage } from "../lib/placeholder.js";
+
+const services = await listServicesWithPhotos();
 ---
 
 <section id="services" class="bg-cream-dim px-5 py-20 sm:px-8 sm:py-28">
@@ -11,27 +14,31 @@ import { services } from "../data/content.js";
 
     <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3">
       {
-        services.map((service, index) => (
-          <button
-            type="button"
-            class="service-trigger group relative aspect-[4/5] overflow-hidden rounded-2xl text-left"
-            data-index={index}
-            aria-label={`View photos for ${service.title}`}
-          >
-            <img
-              src={service.src}
-              alt={service.alt}
-              loading="lazy"
-              width="640"
-              height="800"
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
-            <p class="absolute inset-x-0 bottom-0 p-4 font-display text-base font-semibold text-cream sm:text-lg">
-              {service.title}
-            </p>
-          </button>
-        ))
+        services.map((service, index) => {
+          const cover = service.photos[0];
+          return (
+            <button
+              type="button"
+              class="service-trigger group relative aspect-[4/5] overflow-hidden rounded-2xl text-left"
+              data-index={index}
+              aria-label={`View photos for ${service.title}`}
+              disabled={service.photos.length === 0}
+            >
+              <img
+                src={cover ? cover.url : placeholderImage(service.title)}
+                alt={cover ? cover.alt || service.title : `Placeholder image for ${service.title}`}
+                loading="lazy"
+                width="640"
+                height="800"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+              <p class="absolute inset-x-0 bottom-0 p-4 font-display text-base font-semibold text-cream sm:text-lg">
+                {service.title}
+              </p>
+            </button>
+          );
+        })
       }
     </div>
   </div>
@@ -87,7 +94,7 @@ import { services } from "../data/content.js";
   define:vars={{
     services: services.map((service) => ({
       title: service.title,
-      photos: service.photos,
+      photos: service.photos.map((photo) => ({ src: photo.url, alt: photo.alt || service.title })),
     })),
   }}
 >
@@ -116,6 +123,7 @@ import { services } from "../data/content.js";
   }
 
   function open(serviceIndex) {
+    if (services[serviceIndex].photos.length === 0) return;
     currentService = serviceIndex;
     currentPhoto = 0;
     show();

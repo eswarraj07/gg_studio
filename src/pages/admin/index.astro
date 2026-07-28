@@ -1,0 +1,129 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { listServicesWithPhotos } from "../../lib/file-storage.js";
+
+export const prerender = false;
+
+const services = await listServicesWithPhotos();
+const errorMessage = Astro.url.searchParams.get("error");
+---
+
+<Layout title="Admin Dashboard | GG Studio">
+  <main class="mx-auto min-h-screen max-w-4xl px-5 py-12 sm:px-8">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="font-display text-sm uppercase tracking-[0.3em] text-gold-dark">GG Studio</p>
+        <h1 class="mt-1 font-display text-3xl font-semibold text-ink">Services</h1>
+      </div>
+      <form method="POST" action="/api/admin/logout">
+        <button
+          type="submit"
+          class="rounded-full border border-ink/20 px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-gold-dark hover:text-gold-dark"
+        >
+          Log Out
+        </button>
+      </form>
+    </div>
+
+    {
+      errorMessage && (
+        <p class="mt-6 rounded-lg bg-red-100 px-3 py-2 text-sm text-red-700">{errorMessage}</p>
+      )
+    }
+
+    <form
+      method="POST"
+      action="/api/admin/services"
+      class="mt-8 flex flex-col gap-3 rounded-2xl bg-cream-dim p-5 sm:flex-row"
+    >
+      <input
+        type="text"
+        name="title"
+        placeholder="New service name, e.g. Engagement Shoot"
+        required
+        class="flex-1 rounded-lg border border-ink/15 bg-cream px-3 py-2.5 text-ink outline-none focus:border-gold-dark"
+      />
+      <button
+        type="submit"
+        class="rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-cream transition-colors hover:bg-gold-dark"
+      >
+        Add Service
+      </button>
+    </form>
+
+    <ul class="mt-8 space-y-3">
+      {
+        services.map((service, index) => (
+          <li class="flex items-center gap-4 rounded-2xl bg-cream-dim p-4">
+            <div class="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-ink/10">
+              {service.photos[0] && (
+                <img
+                  src={service.photos[0].url}
+                  alt=""
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              )}
+            </div>
+
+            <div class="min-w-0 flex-1">
+              <p class="truncate font-display text-lg font-semibold text-ink">{service.title}</p>
+              <p class="text-sm text-ink-soft">
+                {service.photos.length} photo{service.photos.length === 1 ? "" : "s"}
+              </p>
+            </div>
+
+            <div class="flex shrink-0 items-center gap-1.5">
+              <form method="POST" action={`/api/admin/services/${service.id}/move`}>
+                <input type="hidden" name="direction" value="up" />
+                <button
+                  type="submit"
+                  disabled={index === 0}
+                  aria-label="Move up"
+                  class="flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 text-ink disabled:opacity-30"
+                >
+                  ↑
+                </button>
+              </form>
+              <form method="POST" action={`/api/admin/services/${service.id}/move`}>
+                <input type="hidden" name="direction" value="down" />
+                <button
+                  type="submit"
+                  disabled={index === services.length - 1}
+                  aria-label="Move down"
+                  class="flex h-8 w-8 items-center justify-center rounded-full border border-ink/15 text-ink disabled:opacity-30"
+                >
+                  ↓
+                </button>
+              </form>
+              <a
+                href={`/admin/services/${service.id}`}
+                class="ml-2 rounded-full border border-ink/20 px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-gold-dark hover:text-gold-dark"
+              >
+                Edit
+              </a>
+              <form
+                method="POST"
+                action={`/api/admin/services/${service.id}/delete`}
+                onsubmit={`return confirm('Delete "${service.title}" and all its photos? This cannot be undone.')`}
+              >
+                <button
+                  type="submit"
+                  class="rounded-full border border-red-200 px-4 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50"
+                >
+                  Delete
+                </button>
+              </form>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      services.length === 0 && (
+        <p class="mt-8 text-center text-ink-soft">No services yet — add your first one above.</p>
+      )
+    }
+  </main>
+</Layout>

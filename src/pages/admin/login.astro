@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export const prerender = false;
+
+const hasError = Astro.url.searchParams.has("error");
+---
+
+<Layout title="Admin Login | GG Studio">
+  <main class="flex min-h-screen items-center justify-center bg-cream px-5">
+    <div class="w-full max-w-sm rounded-2xl bg-cream-dim p-8 shadow-sm">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-gold-dark">GG Studio</p>
+      <h1 class="mt-2 font-display text-2xl font-semibold text-ink">Admin Login</h1>
+
+      {
+        hasError && (
+          <p class="mt-4 rounded-lg bg-red-100 px-3 py-2 text-sm text-red-700">
+            Incorrect password. Try again.
+          </p>
+        )
+      }
+
+      <form method="POST" action="/api/admin/login" class="mt-6 space-y-4">
+        <div>
+          <label for="password" class="block text-sm font-medium text-ink-soft">
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autofocus
+            class="mt-1.5 w-full rounded-lg border border-ink/15 bg-cream px-3 py-2.5 text-ink outline-none focus:border-gold-dark"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-full bg-ink px-6 py-3 text-sm font-medium text-cream transition-colors hover:bg-gold-dark"
+        >
+          Log In
+        </button>
+      </form>
+    </div>
+  </main>
+</Layout>
