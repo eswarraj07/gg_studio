@@ -8,13 +8,13 @@
         "id": 1,
         "url": "/photos/services/bride.jpg",
         "alt": "Bride portrait session",
-        "position": 0
+        "position": 1
       },
       {
         "id": 2,
         "url": "/photos/gallery/bride-pooja.jpg",
         "alt": "Bride holding a ceremonial pooja plate",
-        "position": 1
+        "position": 0
       },
       {
         "id": 3,
@@ -45,13 +45,13 @@
         "id": 6,
         "url": "/photos/services/groom.jpg",
         "alt": "Groom portrait session",
-        "position": 1
+        "position": 0
       },
       {
         "id": 7,
         "url": "/photos/gallery/groom-hall.jpg",
         "alt": "Groom walking through a decorated wedding hall",
-        "position": 0
+        "position": 1
       }
     ]
   },
@@ -201,7 +201,7 @@
         "id": 25,
         "url": "/photos/services/modeling.jpg",
         "alt": "Portfolio modeling photoshoot",
-        "position": 2
+        "position": 0
       },
       {
         "id": 26,
@@ -213,19 +213,19 @@
         "id": 27,
         "url": "/photos/gallery/modeling-red.jpg",
         "alt": "Portfolio shoot portrait in red and gold attire",
-        "position": 0
+        "position": 2
       },
       {
         "id": 28,
         "url": "/photos/gallery/modeling-saree.jpg",
         "alt": "Portfolio shoot portrait in a blue saree",
-        "position": 4
+        "position": 3
       },
       {
         "id": 29,
         "url": "/photos/gallery/modeling-veil.jpg",
         "alt": "Portfolio shoot portrait in a red veil",
-        "position": 3
+        "position": 4
       }
     ]
   },

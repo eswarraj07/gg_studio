@@ -23,9 +23,20 @@ export async function uploadPhotoBuffer(buffer, filename) {
   const client = getSupabaseClient();
   const filepath = `photos/${Date.now()}-${filename}`;
 
+  // Detect content type from filename
+  const ext = filename.toLowerCase().split('.').pop();
+  const contentTypeMap = {
+    jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    gif: 'image/gif',
+    webp: 'image/webp',
+  };
+  const contentType = contentTypeMap[ext] || 'image/jpeg';
+
   const { data, error } = await client.storage
     .from("photos")
-    .upload(filepath, buffer, { contentType: "image/jpeg" });
+    .upload(filepath, buffer, { contentType });
 
   if (error) {
     throw new Error(`Supabase upload failed: ${error.message}`);

@@ -64,10 +64,18 @@ export async function moveServicePosition(id, direction) {
   const ids = services.sort((a, b) => a.position - b.position).map((s) => s.id);
   const index = ids.indexOf(id);
   if (index === -1) return;
+
   const swapWith = direction === "up" ? index - 1 : index + 1;
   if (swapWith < 0 || swapWith >= ids.length) return;
+
   [ids[index], ids[swapWith]] = [ids[swapWith], ids[index]];
-  await reorderServices(ids);
+
+  ids.forEach((serviceId, idx) => {
+    const service = services.find((s) => s.id === serviceId);
+    if (service) service.position = idx;
+  });
+
+  saveServices(services);
 }
 
 export async function deleteService(id) {
@@ -129,15 +137,25 @@ export async function reorderPhotos(serviceId, orderedPhotoIds) {
 }
 
 export async function movePhotoPosition(serviceId, photoId, direction) {
-  const service = await getService(serviceId);
+  const services = getServices();
+  const service = services.find((s) => s.id === serviceId);
   if (!service) return;
+
   const ids = service.photos.sort((a, b) => a.position - b.position).map((p) => p.id);
   const index = ids.indexOf(photoId);
   if (index === -1) return;
+
   const swapWith = direction === "up" ? index - 1 : index + 1;
   if (swapWith < 0 || swapWith >= ids.length) return;
+
   [ids[index], ids[swapWith]] = [ids[swapWith], ids[index]];
-  await reorderPhotos(serviceId, ids);
+
+  ids.forEach((id, idx) => {
+    const photo = service.photos.find((p) => p.id === id);
+    if (photo) photo.position = idx;
+  });
+
+  saveServices(services);
 }
 
 export async function updatePhotoAlt(photoId, alt) {
