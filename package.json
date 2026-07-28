@@ -16,9 +16,7 @@
     "@supabase/supabase-js": "^2.111.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.1.1",
-    "cloudinary": "^2.10.0",
     "dotenv": "^17.4.2",
-    "pg": "^8.22.0",
     "tailwindcss": "^4.3.3"
   }
 }
