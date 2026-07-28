@@ -12,6 +12,10 @@ import path from 'path';
 export default defineConfig({
   output: 'server',
 
+  server: {
+    host: '0.0.0.0'
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },
