@@ -2,56 +2,63 @@
   {
     "id": 1,
     "title": "Bride Portraits",
-    "position": 0,
+    "position": 1,
     "photos": [
       {
-        "id": 1,
-        "url": "/photos/services/bride.jpg",
-        "alt": "Bride portrait session",
-        "position": 1
-      },
-      {
-        "id": 2,
-        "url": "/photos/gallery/bride-pooja.jpg",
-        "alt": "Bride holding a ceremonial pooja plate",
-        "position": 0
-      },
-      {
         "id": 3,
-        "url": "/photos/gallery/bride-portrait.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-portrait.jpg",
         "alt": "Bride in white gown holding a bouquet",
-        "position": 2
-      },
-      {
-        "id": 4,
-        "url": "/photos/gallery/bride-joyful.jpg",
-        "alt": "Bride smiling with gold jewelry raised",
-        "position": 3
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/bride-portrait.jpg"
       },
       {
         "id": 5,
-        "url": "/photos/gallery/bride-elegant.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-elegant.jpg",
         "alt": "Bride portrait leaning against a pillar",
-        "position": 4
+        "position": 0,
+        "supabasePublicId": "legacy/gallery/bride-elegant.jpg"
+      },
+      {
+        "id": 1,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/bride.jpg",
+        "alt": "Bride portrait session",
+        "position": 2,
+        "supabasePublicId": "legacy/services/bride.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-pooja.jpg",
+        "alt": "Bride holding a ceremonial pooja plate",
+        "position": 3,
+        "supabasePublicId": "legacy/gallery/bride-pooja.jpg"
+      },
+      {
+        "id": 4,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/bride-joyful.jpg",
+        "alt": "Bride smiling with gold jewelry raised",
+        "position": 4,
+        "supabasePublicId": "legacy/gallery/bride-joyful.jpg"
       }
     ]
   },
   {
     "id": 2,
     "title": "Groom Portraits",
-    "position": 1,
+    "position": 0,
     "photos": [
       {
         "id": 6,
-        "url": "/photos/services/groom.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/groom.jpg",
         "alt": "Groom portrait session",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/groom.jpg"
       },
       {
         "id": 7,
-        "url": "/photos/gallery/groom-hall.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/groom-hall.jpg",
         "alt": "Groom walking through a decorated wedding hall",
-        "position": 1
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/groom-hall.jpg"
       }
     ]
   },
@@ -62,33 +69,38 @@
     "photos": [
       {
         "id": 8,
-        "url": "/photos/services/couple.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/couple.jpg",
         "alt": "Couple portrait session",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/couple.jpg"
       },
       {
         "id": 9,
-        "url": "/photos/gallery/couple-sofa.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/couple-sofa.jpg",
         "alt": "Couple seated together in front of a floral backdrop",
-        "position": 1
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/couple-sofa.jpg"
       },
       {
         "id": 10,
-        "url": "/photos/gallery/couple-romantic.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/couple-romantic.jpg",
         "alt": "Couple smiling closely under pink lighting",
-        "position": 2
+        "position": 2,
+        "supabasePublicId": "legacy/gallery/couple-romantic.jpg"
       },
       {
         "id": 11,
-        "url": "/photos/gallery/outdoor-heart.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/outdoor-heart.jpg",
         "alt": "Couple framed inside a heart-shaped floral display",
-        "position": 3
+        "position": 3,
+        "supabasePublicId": "legacy/gallery/outdoor-heart.jpg"
       },
       {
         "id": 12,
-        "url": "/photos/gallery/outdoor-archway.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/outdoor-archway.jpg",
         "alt": "Couple standing under a floral archway",
-        "position": 4
+        "position": 4,
+        "supabasePublicId": "legacy/gallery/outdoor-archway.jpg"
       }
     ]
   },
@@ -99,33 +111,38 @@
     "photos": [
       {
         "id": 13,
-        "url": "/photos/services/pre-post-wedding.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/pre-post-wedding.jpg",
         "alt": "Bride descending a grand staircase, pre-wedding photoshoot",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/pre-post-wedding.jpg"
       },
       {
         "id": 14,
-        "url": "/photos/gallery/wedding-staircase.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/wedding-staircase.jpg",
         "alt": "Bride descending a grand staircase in a flowing gown",
-        "position": 1
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/wedding-staircase.jpg"
       },
       {
         "id": 15,
-        "url": "/photos/gallery/wedding-editorial.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/wedding-editorial.jpg",
         "alt": "Bride in a silver gown, outdoor editorial portrait",
-        "position": 2
+        "position": 2,
+        "supabasePublicId": "legacy/gallery/wedding-editorial.jpg"
       },
       {
         "id": 16,
-        "url": "/photos/gallery/wedding-garden.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/wedding-garden.jpg",
         "alt": "Bride standing outside a church with a bouquet",
-        "position": 3
+        "position": 3,
+        "supabasePublicId": "legacy/gallery/wedding-garden.jpg"
       },
       {
         "id": 17,
-        "url": "/photos/gallery/wedding-bouquet-bw.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/wedding-bouquet-bw.jpg",
         "alt": "Black and white portrait of a bride holding a bouquet",
-        "position": 4
+        "position": 4,
+        "supabasePublicId": "legacy/gallery/wedding-bouquet-bw.jpg"
       }
     ]
   },
@@ -136,21 +153,24 @@
     "photos": [
       {
         "id": 18,
-        "url": "/photos/services/candid.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/candid.jpg",
         "alt": "Candid photo of a groom walking through a lit venue",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/candid.jpg"
       },
       {
         "id": 19,
-        "url": "/photos/gallery/candid-ritual.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/candid-ritual.jpg",
         "alt": "Candid moment of a couple during a wedding ritual",
-        "position": 1
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/candid-ritual.jpg"
       },
       {
         "id": 20,
-        "url": "/photos/gallery/candid-ceremony.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/candid-ceremony.jpg",
         "alt": "Candid moment of a couple seated during a ceremony",
-        "position": 2
+        "position": 2,
+        "supabasePublicId": "legacy/gallery/candid-ceremony.jpg"
       }
     ]
   },
@@ -161,15 +181,17 @@
     "photos": [
       {
         "id": 21,
-        "url": "/photos/services/maternity.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/maternity.jpg",
         "alt": "Maternity portrait in a traditional saree",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/maternity.jpg"
       },
       {
         "id": 22,
-        "url": "/photos/gallery/maternity-couple.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/maternity-couple.jpg",
         "alt": "Expecting couple portrait during a Seemantham ceremony",
-        "position": 1
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/maternity-couple.jpg"
       }
     ]
   },
@@ -180,102 +202,115 @@
     "photos": [
       {
         "id": 23,
-        "url": "/photos/services/newborn-portrait.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/newborn-portrait.jpg",
         "alt": "Baby in a white outfit, portrait session",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/newborn-portrait.jpg"
       },
       {
         "id": 24,
-        "url": "/photos/gallery/birthday-mother.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/birthday-mother.jpg",
         "alt": "Mother embracing her baby in a flower headband",
-        "position": 1
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "title": "Modeling / Portfolio Shoot",
-    "position": 7,
-    "photos": [
-      {
-        "id": 25,
-        "url": "/photos/services/modeling.jpg",
-        "alt": "Portfolio modeling photoshoot",
-        "position": 0
-      },
-      {
-        "id": 26,
-        "url": "/photos/gallery/modeling-outdoor.jpg",
-        "alt": "Portfolio shoot portrait among green leaves",
-        "position": 1
-      },
-      {
-        "id": 27,
-        "url": "/photos/gallery/modeling-red.jpg",
-        "alt": "Portfolio shoot portrait in red and gold attire",
-        "position": 2
-      },
-      {
-        "id": 28,
-        "url": "/photos/gallery/modeling-saree.jpg",
-        "alt": "Portfolio shoot portrait in a blue saree",
-        "position": 3
-      },
-      {
-        "id": 29,
-        "url": "/photos/gallery/modeling-veil.jpg",
-        "alt": "Portfolio shoot portrait in a red veil",
-        "position": 4
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/birthday-mother.jpg"
       }
     ]
   },
   {
     "id": 9,
     "title": "Bharatanatyam / Dance Photoshoot",
-    "position": 8,
+    "position": 7,
     "photos": [
       {
         "id": 30,
-        "url": "/photos/services/bharatanatyam.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/bharatanatyam.jpg",
         "alt": "Bharatanatyam dancer in costume, studio photoshoot",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/services/bharatanatyam.jpg"
       },
       {
         "id": 31,
-        "url": "/photos/gallery/dance-1.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/dance-1.jpg",
         "alt": "Bharatanatyam dancer in a dramatic pose",
-        "position": 1
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/dance-1.jpg"
       },
       {
         "id": 32,
-        "url": "/photos/gallery/dance-2.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/dance-2.jpg",
         "alt": "Bharatanatyam dancer seated in costume",
-        "position": 2
+        "position": 2,
+        "supabasePublicId": "legacy/gallery/dance-2.jpg"
       },
       {
         "id": 33,
-        "url": "/photos/gallery/dance-group.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/dance-group.jpg",
         "alt": "Group of Bharatanatyam dancers in a dramatic pose",
-        "position": 3
+        "position": 3,
+        "supabasePublicId": "legacy/gallery/dance-group.jpg"
       },
       {
         "id": 34,
-        "url": "/photos/gallery/dance-solo.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/dance-solo.jpg",
         "alt": "Bharatanatyam dancer in a dynamic pose",
-        "position": 4
+        "position": 4,
+        "supabasePublicId": "legacy/gallery/dance-solo.jpg"
       }
     ]
   },
   {
     "id": 10,
     "title": "Gifts & Frames",
-    "position": 9,
+    "position": 8,
     "photos": [
       {
         "id": 35,
-        "url": "/photos/services/gifts-frames.jpg",
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/gifts-frames.jpg",
         "alt": "Photo frame and gift bag with tissue paper",
-        "position": 0
+        "position": 0,
+        "supabasePublicId": "legacy/gallery/gifts-frames.jpg"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Modeling / Portfolio Shoot",
+    "position": 9,
+    "photos": [
+      {
+        "id": 25,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/services/modeling.jpg",
+        "alt": "Portfolio modeling photoshoot",
+        "position": 0,
+        "supabasePublicId": "legacy/services/modeling.jpg"
+      },
+      {
+        "id": 26,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/modeling-outdoor.jpg",
+        "alt": "Portfolio shoot portrait among green leaves",
+        "position": 1,
+        "supabasePublicId": "legacy/gallery/modeling-outdoor.jpg"
+      },
+      {
+        "id": 27,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/modeling-red.jpg",
+        "alt": "Portfolio shoot portrait in red and gold attire",
+        "position": 2,
+        "supabasePublicId": "legacy/gallery/modeling-red.jpg"
+      },
+      {
+        "id": 28,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/modeling-saree.jpg",
+        "alt": "Portfolio shoot portrait in a blue saree",
+        "position": 3,
+        "supabasePublicId": "legacy/gallery/modeling-saree.jpg"
+      },
+      {
+        "id": 29,
+        "url": "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/gallery/modeling-veil.jpg",
+        "alt": "Portfolio shoot portrait in a red veil",
+        "position": 4,
+        "supabasePublicId": "legacy/gallery/modeling-veil.jpg"
       }
     ]
   }

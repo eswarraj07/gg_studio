@@ -21,11 +21,11 @@ export const studio = {
 
 export const heroImage = {
   srcset: [
-    { src: "/photos/hero/hero-800.jpg", width: 800 },
-    { src: "/photos/hero/hero-1200.jpg", width: 1200 },
-    { src: "/photos/hero/hero-1800.jpg", width: 1800 },
+    { src: "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/hero/hero-800.jpg", width: 800 },
+    { src: "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/hero/hero-1200.jpg", width: 1200 },
+    { src: "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/hero/hero-1800.jpg", width: 1800 },
   ],
-  src: "/photos/hero/hero-1800.jpg",
+  src: "https://spwrgzmyokfsbxwjaxlh.supabase.co/storage/v1/object/public/photos/legacy/hero/hero-1800.jpg",
   alt: "Bride in traditional gold jewelry and silk saree, studio portrait",
 };
 
