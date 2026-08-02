@@ -1,22 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
-
-let supabase;
-
-function getSupabaseClient() {
-  if (supabase) return supabase;
-
-  const url = process.env.PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !key) {
-    throw new Error(
-      "Supabase is not configured. Set PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env",
-    );
-  }
-
-  supabase = createClient(url, key);
-  return supabase;
-}
+import { getSupabaseClient } from "./supabase-client.js";
 
 /** Uploads a file buffer to Supabase Storage and returns the public URL. */
 export async function uploadPhotoBuffer(buffer, filename) {
