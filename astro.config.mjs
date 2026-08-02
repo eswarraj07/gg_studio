@@ -16,6 +16,16 @@ export default defineConfig({
     host: '0.0.0.0'
   },
 
+  security: {
+    // Trust X-Forwarded-Proto/Host from Railway's proxy for these hosts;
+    // without this the CSRF origin check sees http:// and rejects form POSTs.
+    allowedDomains: [
+      { hostname: 'localhost' },
+      { hostname: '127.0.0.1' },
+      { hostname: '**.up.railway.app', protocol: 'https' }
+    ]
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },
