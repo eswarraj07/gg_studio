@@ -12,7 +12,8 @@ if (!service) {
 }
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? "";
-const supabaseConfigured = Boolean(supabaseUrl);
+// In dev, uploads go to public/uploads/ so no Supabase config is needed.
+const supabaseConfigured = import.meta.env.DEV || Boolean(supabaseUrl);
 const atPhotoLimit = service.photos.length >= MAX_PHOTOS_PER_SERVICE;
 ---
 

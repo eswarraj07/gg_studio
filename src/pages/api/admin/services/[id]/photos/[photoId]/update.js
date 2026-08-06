@@ -8,6 +8,6 @@ export async function POST({ params, request, redirect }) {
   const form = await request.formData();
   const alt = String(form.get("alt") ?? "").trim();
 
-  await updatePhotoAlt(photoId, alt);
+  await updatePhotoAlt(serviceId, photoId, alt);
   return redirect(`/admin/services/${serviceId}`);
 }

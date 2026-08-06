@@ -7,7 +7,7 @@ export async function POST({ params, redirect }) {
   const serviceId = Number(params.id);
   const photoId = Number(params.photoId);
 
-  const deleted = await deletePhoto(photoId);
+  const deleted = await deletePhoto(serviceId, photoId);
   if (deleted?.supabasePublicId) {
     await deleteSupabasePhoto(deleted.supabasePublicId);
   }

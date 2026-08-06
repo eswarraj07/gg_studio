@@ -1,32 +1,38 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { getSupabaseClient } from "./supabase-client.js";
 
-// services.json lives in the Supabase "photos" bucket so admin edits
-// survive Railway redeploys (the container filesystem is ephemeral).
-// The committed data/services.json is only a seed for first run.
+// In production, services.json lives in the Supabase "photos" bucket so
+// admin edits survive Railway redeploys (the container filesystem is
+// ephemeral). In local dev (astro dev) it is read from and written to
+// the committed data/services.json directly, so testing never touches
+// production data. That same committed file doubles as the first-run
+// seed for the bucket.
+const IS_LOCAL = import.meta.env.DEV;
 const BUCKET = "photos";
 const OBJECT_PATH = "data/services.json";
 const CACHE_TTL_MS = 30_000;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SEED_FILE = resolve(__dirname, "../../data/services.json");
+const LOCAL_FILE = resolve(__dirname, "../../data/services.json");
 
 export const MAX_PHOTOS_PER_SERVICE = 10;
 
 let cache = null;
 let cacheTime = 0;
 
-function readSeedFile() {
+function readLocalFile() {
   try {
-    return JSON.parse(readFileSync(SEED_FILE, "utf-8"));
+    return JSON.parse(readFileSync(LOCAL_FILE, "utf-8"));
   } catch {
     return [];
   }
 }
 
 async function loadServices() {
+  if (IS_LOCAL) return readLocalFile();
+
   if (cache && Date.now() - cacheTime < CACHE_TTL_MS) return cache;
 
   const client = getSupabaseClient();
@@ -34,7 +40,7 @@ async function loadServices() {
 
   if (error) {
     // First run: the file doesn't exist in the bucket yet — seed it.
-    const seed = readSeedFile();
+    const seed = readLocalFile();
     await saveServices(seed);
     return seed;
   }
@@ -45,12 +51,16 @@ async function loadServices() {
 }
 
 async function saveServices(services) {
-  const client = getSupabaseClient();
-  const body = Buffer.from(JSON.stringify(services, null, 2) + "\n");
+  const body = JSON.stringify(services, null, 2) + "\n";
 
-  const { error } = await client.storage
-    .from(BUCKET)
-    .upload(OBJECT_PATH, body, { contentType: "application/json", upsert: true });
+  if (IS_LOCAL) {
+    writeFileSync(LOCAL_FILE, body, "utf-8");
+    return;
+  }
+
+  const { error } = await getSupabaseClient()
+    .storage.from(BUCKET)
+    .upload(OBJECT_PATH, Buffer.from(body), { contentType: "application/json", upsert: true });
 
   if (error) {
     throw new Error(`Failed to save services.json to Supabase: ${error.message}`);
@@ -139,29 +149,28 @@ export async function addPhoto(serviceId, { url, alt, supabasePublicId }) {
   return photo;
 }
 
-export async function getPhoto(photoId) {
+// Photo ids are only unique within a service (addPhoto assigns per-service
+// max+1), so photo lookups must always be scoped by serviceId.
+export async function getPhoto(serviceId, photoId) {
   const services = await loadServices();
-  for (const service of services) {
-    const photo = service.photos.find((p) => p.id === photoId);
-    if (photo) return photo;
-  }
-  return null;
+  const service = services.find((s) => s.id === serviceId);
+  return service?.photos.find((p) => p.id === photoId) ?? null;
 }
 
-export async function deletePhoto(photoId) {
+export async function deletePhoto(serviceId, photoId) {
   const services = await loadServices();
-  for (const service of services) {
-    const photoIndex = service.photos.findIndex((p) => p.id === photoId);
-    if (photoIndex !== -1) {
-      const [deleted] = service.photos.splice(photoIndex, 1);
-      service.photos
-        .sort((a, b) => a.position - b.position)
-        .forEach((p, idx) => (p.position = idx));
-      await saveServices(services);
-      return deleted;
-    }
-  }
-  return null;
+  const service = services.find((s) => s.id === serviceId);
+  if (!service) return null;
+
+  const photoIndex = service.photos.findIndex((p) => p.id === photoId);
+  if (photoIndex === -1) return null;
+
+  const [deleted] = service.photos.splice(photoIndex, 1);
+  service.photos
+    .sort((a, b) => a.position - b.position)
+    .forEach((p, idx) => (p.position = idx));
+  await saveServices(services);
+  return deleted;
 }
 
 export async function movePhotoPosition(serviceId, photoId, direction) {
@@ -186,14 +195,12 @@ export async function movePhotoPosition(serviceId, photoId, direction) {
   await saveServices(services);
 }
 
-export async function updatePhotoAlt(photoId, alt) {
+export async function updatePhotoAlt(serviceId, photoId, alt) {
   const services = await loadServices();
-  for (const service of services) {
-    const photo = service.photos.find((p) => p.id === photoId);
-    if (photo) {
-      photo.alt = alt;
-      await saveServices(services);
-      return;
-    }
+  const service = services.find((s) => s.id === serviceId);
+  const photo = service?.photos.find((p) => p.id === photoId);
+  if (photo) {
+    photo.alt = alt;
+    await saveServices(services);
   }
 }

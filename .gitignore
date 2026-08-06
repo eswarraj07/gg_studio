@@ -27,3 +27,6 @@ pnpm-debug.log*
 wetransfer_*/
 wetransfer_*.zip
 wetransfer_*.rar
+
+# local dev photo uploads
+public/uploads/
