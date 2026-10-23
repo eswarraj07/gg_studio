@@ -28,5 +28,5 @@ wetransfer_*/
 wetransfer_*.zip
 wetransfer_*.rar
 
-# local dev photo uploads
-public/uploads/
+# packaged photo handoff for the client (regenerate with: npm run package-photos)
+/gg-studio-photos.zip

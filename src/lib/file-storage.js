@@ -1,73 +1,27 @@
-import { readFileSync, writeFileSync } from "node:fs";
-import { resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { getSupabaseClient } from "./supabase-client.js";
+import { readFileSync, renameSync, writeFileSync } from "node:fs";
+import { SERVICES_FILE, ensureDataDir } from "./data-dir.js";
 
-// In production, services.json lives in the Supabase "photos" bucket so
-// admin edits survive Railway redeploys (the container filesystem is
-// ephemeral). In local dev (astro dev) it is read from and written to
-// the committed data/services.json directly, so testing never touches
-// production data. That same committed file doubles as the first-run
-// seed for the bucket.
-const IS_LOCAL = import.meta.env.DEV;
-const BUCKET = "photos";
-const OBJECT_PATH = "data/services.json";
-const CACHE_TTL_MS = 30_000;
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const LOCAL_FILE = resolve(__dirname, "../../data/services.json");
+// services.json (service titles, ordering and photo metadata) lives in
+// DATA_DIR — see data-dir.js. It is small, so it is re-read on every
+// request and written atomically (temp file + rename).
 
 export const MAX_PHOTOS_PER_SERVICE = 10;
 
-let cache = null;
-let cacheTime = 0;
-
-function readLocalFile() {
-  try {
-    return JSON.parse(readFileSync(LOCAL_FILE, "utf-8"));
-  } catch {
-    return [];
-  }
-}
-
 async function loadServices() {
-  if (IS_LOCAL) return readLocalFile();
-
-  if (cache && Date.now() - cacheTime < CACHE_TTL_MS) return cache;
-
-  const client = getSupabaseClient();
-  const { data, error } = await client.storage.from(BUCKET).download(OBJECT_PATH);
-
-  if (error) {
-    // First run: the file doesn't exist in the bucket yet — seed it.
-    const seed = readLocalFile();
-    await saveServices(seed);
-    return seed;
+  ensureDataDir();
+  try {
+    return JSON.parse(readFileSync(SERVICES_FILE, "utf-8"));
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw new Error(`Could not read ${SERVICES_FILE}: ${error.message}`);
   }
-
-  cache = JSON.parse(await data.text());
-  cacheTime = Date.now();
-  return cache;
 }
 
 async function saveServices(services) {
-  const body = JSON.stringify(services, null, 2) + "\n";
-
-  if (IS_LOCAL) {
-    writeFileSync(LOCAL_FILE, body, "utf-8");
-    return;
-  }
-
-  const { error } = await getSupabaseClient()
-    .storage.from(BUCKET)
-    .upload(OBJECT_PATH, Buffer.from(body), { contentType: "application/json", upsert: true });
-
-  if (error) {
-    throw new Error(`Failed to save services.json to Supabase: ${error.message}`);
-  }
-
-  cache = services;
-  cacheTime = Date.now();
+  ensureDataDir();
+  const tmp = `${SERVICES_FILE}.tmp`;
+  writeFileSync(tmp, JSON.stringify(services, null, 2) + "\n", "utf-8");
+  renameSync(tmp, SERVICES_FILE);
 }
 
 function getNextId(items) {
@@ -136,14 +90,14 @@ export async function countPhotos(serviceId) {
   return service?.photos.length ?? 0;
 }
 
-export async function addPhoto(serviceId, { url, alt, supabasePublicId }) {
+export async function addPhoto(serviceId, { url, alt, storageKey }) {
   const services = await loadServices();
   const service = services.find((s) => s.id === serviceId);
   if (!service) return null;
 
   const photoId = getNextId(service.photos);
   const position = service.photos.length;
-  const photo = { id: photoId, url, alt: alt ?? "", supabasePublicId: supabasePublicId ?? null, position };
+  const photo = { id: photoId, url, alt: alt ?? "", storageKey: storageKey ?? null, position };
   service.photos.push(photo);
   await saveServices(services);
   return photo;

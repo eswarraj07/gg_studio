@@ -1,4 +1,5 @@
-import { uploadPhotoBuffer } from "../../../../../../lib/supabase-storage.js";
+import { uploadPhotoBuffer } from "../../../../../../lib/photo-storage.js";
+import { getService } from "../../../../../../lib/file-storage.js";
 
 export const prerender = false;
 
@@ -14,10 +15,20 @@ export async function POST({ params, request }) {
       });
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const { url, supabasePublicId } = await uploadPhotoBuffer(buffer, file.name);
+    const service = await getService(Number(params.id));
+    if (!service) {
+      return new Response(JSON.stringify({ error: "Service not found." }), {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
-    return new Response(JSON.stringify({ url, supabasePublicId }), {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const { url, storageKey } = await uploadPhotoBuffer(buffer, file.name, {
+      serviceTitle: service.title,
+    });
+
+    return new Response(JSON.stringify({ url, storageKey }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

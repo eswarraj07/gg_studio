@@ -14,7 +14,7 @@ export async function POST({ params, request }) {
   }
 
   const body = await request.json();
-  const { url, alt, supabasePublicId } = body ?? {};
+  const { url, alt, storageKey } = body ?? {};
 
   if (!url || typeof url !== "string") {
     return new Response(JSON.stringify({ error: "A photo url is required." }), {
@@ -23,7 +23,7 @@ export async function POST({ params, request }) {
     });
   }
 
-  const photo = await addPhoto(serviceId, { url, alt, supabasePublicId });
+  const photo = await addPhoto(serviceId, { url, alt, storageKey });
   return new Response(JSON.stringify({ photo }), {
     status: 201,
     headers: { "Content-Type": "application/json" },
