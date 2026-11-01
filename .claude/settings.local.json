@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Store services.json in Supabase Storage instead of local filesystem *)",
+      "Bash(git push *)"
+    ]
+  }
+}
